@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Ajedrez para la Vida | Colombia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #E74C3C;
+            --primary-green: #8CC63F;
+            --primary-blue: #00AEEF;
+            --dark-blue: #2C3E50;
+            --text-dark: #333;
+            --bg-light: #f4f7f6;
+            --wa-color: #25D366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        header {
+            background: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: center; /* Centrado para móvil */
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-img {
+            height: 70px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #e0f7fa 100%);
+        }
+
+        .hero h1 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.6rem;
+            color: var(--dark-blue);
+        }
+
+        /* --- METODOLOGÍA (CONSTRUCTIVISMO) --- */
+        .metodologia-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .metodo-card {
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .teoria { background-color: var(--primary-red); }
+        .practica { background-color: var(--primary-green); }
+
+        .metodo-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+
+        /* --- PLANES DE PRECIOS (MOBILE FIRST) --- */
+        .pricing-section { background-color: var(--bg-light); }
+
+        .nota-grupos {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .pricing-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .price-card:active { transform: scale(0.98); }
+
+        .card-header { font-size: 1.5rem; color: var(--dark-blue); font-weight: bold; }
+        .price { font-size: 2.2rem; color: var(--primary-red); margin: 10px 0; font-weight: 800; }
+
+        .features { list-style: none; text-align: left; margin-bottom: 20px; }
+        .features li { padding: 8px 0; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        .features li::before { content: "♟ "; color: var(--primary-blue); }
+
+        .btn-plan {
+            display: block;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .featured { border: 3px solid var(--primary-green); }
+
+        /* --- CONTACTO --- */
+        .contact-section { text-align: center; background: white; }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-contact {
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .wa { background-color: var(--wa-color); }
+        .email { background-color: var(--dark-blue); }
+
+        /* --- BOTÓN FLOTANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--wa-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+        }
+
+        .whatsapp-float img { width: 35px; height: 35px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVIDAD (TABLETS/PC) --- */
+        @media (min-width: 768px) {
+            .metodologia-container, .pricing-container, .contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .hero h1 { font-size: 3rem; }
+            .price-card { width: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/573216284300?text=Hola!%20Quiero%20información%20sobre%20la%20Escuela%20de%20Ajedrez" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <header>
+        <img src="LOGO ESCUELA DE AJEDREZ PARA LA VIDA  SIN TEXTO.jpg" alt="Logo Escuela de Ajedrez para la Vida" class="logo-img">
+    </header>
+
+    <section class="hero">
+        <h1>Ajedrez para la Vida</h1>
+        <p>Potenciamos la creatividad, la resolución de problemas y los valores a través del deporte ciencia</p>
+        <a href="#planes" class="btn-plan" style="background-color: var(--primary-red); padding: 15px 30px; display: inline-block;">Ver Planes e Inscripciones</a>
+    </section>
+
+    <section id="metodologia">
+        <h2>Nuestro Proyecto Pedagógico</h2>
+        <div class="metodologia-container">
+            <div class="metodo-card teoria">
+                <h3>30% Teoría</h3>
+                <p>Conceptos clave para entender la estrategia detrás de cada pieza.</p>
+            </div>
+            <div class="metodo-card practica">
+                <h3>70% Práctica</h3>
+                <p>Aprendizaje constructivista: aprendemos jugando y resolviendo retos reales.</p>
+            </div>
+        </div>
+        <p style="margin-top:20px; text-align:center; color:#666;">
+            <strong>El ajedrez como metáfora de la vida:</strong> estimulamos la atención, la memoria y el desarrollo social.
+        </p>
+    </section>
+
+    <section id="planes" class="pricing-section">
+        <h2>Planes de Entrenamiento</h2>
+        <div class="nota-grupos">
+            ♟️ <strong>GRUPOS PEQUEÑOS:</strong> Máximo 6 estudiantes por profesor para asegurar un aprendizaje personalizado.
+        </div>
+
+        <div class="pricing-container">
+            <div class="price-card">
+                <div class="card-header">Plan A</div>
+                <div class="price">$90.000</div>
+                <ul class="features">
+                    <li>4 clases de 1 hora</li>
+                    <li>Cupo asegurado en eventos</li>
+                    <li>Inscripción gratuita a torneos</li>
+                    <li>Plataforma (al 3er mes)</li>
+                    <li><strong>10% Dto.</strong> en Psicología</li>
+                </ul>
+                <a href="https://wa.me/573216284300?text=Me%20interesa%20el%20Plan%20A" class="btn-plan">Elegir Plan A</a>
+            </div>
+
+            <div class="price-card featured">
+                <div class="card-header">Plan B</div>
+                <div class="price">$130.000</div>
+                <ul class="features">
+                    <li>8 clases de 1 hora</li>
+                    <li>Cupo asegurado en eventos</li>
+                    <li>Inscripción gratuita a torneos</li>
+                    <li>Plataforma Activa</li>
+                    <li><strong>30% Dto.</strong> en Psicología</li>
+                </ul>
+                <a href="https://wa.me/573216284300?text=Me%20interesa%20el%20Plan%20B" class="btn-plan" style="background-color: var(--primary-green);">Elegir Plan B</a>
+            </div>
+
+            <div class="price-card">
+                <div class="card-header">Plan C</div>
+                <div class="price">$160.000</div>
+                <ul class="features">
+                    <li>12 clases de 1 hora</li>
+                    <li>Cupo asegurado en eventos</li>
+                    <li>Inscripción gratuita a torneos</li>
+                    <li>Plataforma Activa</li>
+                    <li><strong>50% Dto.</strong> en Psicología</li>
+                </ul>
+                <a href="https://wa.me/573216284300?text=Me%20interesa%20el%20Plan%20C" class="btn-plan">Elegir Plan C</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <h2>Hablemos</h2>
+        <p>¿Tienes preguntas? Estamos listos para asesorarte.</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/573216284300" class="btn-contact wa" target="_blank">
+                WhatsApp 1: 321 628 4300
+            </a>
+            <a href="https://wa.me/573128896929" class="btn-contact wa" target="_blank">
+                WhatsApp 2: 312 889 6929
+            </a>
+            <a href="mailto:escueladeajedrezyvida@gmail.com" class="btn-contact email">
+                Email: escueladeajedrezyvida@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Ajedrez para la Vida</strong></p>
+        <p>Club Deportivo con enfoque Pedagógico y Psicológico</p>
+        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">
+            &copy; 2018 Escuela de Ajedrez para la Vida - Colombia.
+        </p>
+    </footer>
+
+</body>
+</html>
